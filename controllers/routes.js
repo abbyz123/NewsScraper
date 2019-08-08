@@ -5,6 +5,8 @@ let db = require("../models");
 let axios = require("axios");
 let cheerio = require("cheerio");
 
+let comments = [];
+
 // routes (HTML + API)
 module.exports = function (app) {
     // Route for getting all the articles in database
@@ -13,7 +15,8 @@ module.exports = function (app) {
         db.Article.find({})
         .then(function(dbArticle) {
             let hbsObj = {
-                articles: dbArticle
+                articles: dbArticle,
+                comments: comments
             };
             console.log(dbArticle);
             // render the handlebar index with the object hbsObj
@@ -62,11 +65,10 @@ module.exports = function (app) {
         console.log(req.params.id);
         db.Comment.find({article: req.params.id})
         .then(function(dbComments) {
-            let hbsObj = {
-                comments: dbComments
-            }
             console.log(dbComments);
-            res.render("index", hbsObj);
+            comments = dbComments;
+
+            res.redirect("/");
         })
     })
 

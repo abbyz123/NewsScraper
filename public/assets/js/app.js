@@ -11,11 +11,11 @@ $(function () {
         })
     })
 
-    $(".showCommentsButton").on("click", async function (event) {
+    $(".showCommentsButton").on("click", function (event) {
         let articleId = $(this).parent().prev().attr("id");
         console.log(articleId);
 
-        await $.ajax("/comments/" + articleId, {
+        $.ajax("/comments/" + articleId, {
             type: "GET",
         }).then(function () {
             console.log("comments loaded");
