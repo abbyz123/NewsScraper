@@ -9,7 +9,11 @@ let PORT = 3000;
 let app = express();
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/hackernews", { useNewUrlParser: true });
+if (process.env.MONGODB_URI) {
+    mongoose.connect(MONGODB_URI, { useNewUrlParser: true })
+} else {
+    mongoose.connect("mongodb://localhost/hackernews", { useNewUrlParser: true });
+}
 
 // Use morgan logger for logging requests
 app.use(logger("dev"));
