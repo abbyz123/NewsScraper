@@ -10,7 +10,7 @@ let app = express();
 
 // Connect to the Mongo DB
 if (process.env.MONGODB_URI) {
-    mongoose.connect(MONGODB_URI, { useNewUrlParser: true })
+    mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true })
 } else {
     mongoose.connect("mongodb://localhost/hackernews", { useNewUrlParser: true });
 }
