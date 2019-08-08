@@ -10,7 +10,17 @@
             {{/each}}
         </div>
         <div class="col-md-4">
-            
+            {{#each comments}}
+
+            {{/each}}
+            <div class="container" id="commentBox" style="display:none">
+                <form id="commentForm">
+                    <input name="commentTitle" placeholder="title">
+                    <input name="commentAuthor" placeholder="Your Name">
+                    <textarea name="commentBody" placeholder="Leave a comment..."></textarea>
+                    <button type="submit">Comment!</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
