@@ -56,4 +56,29 @@ module.exports = function (app) {
             res.redirect("/");
         })
     });
+
+    // get all comments
+    app.get("/comments/:id", function(req, res) {
+        console.log(req.params.id);
+        db.Comment.find({article: req.params.id})
+        .then(function(dbComments) {
+            let hbsObj = {
+                comments: dbComments
+            }
+            console.log(dbComments);
+            res.render("index", hbsObj);
+        })
+    })
+
+    // post comment
+    app.post("/api/comment", function(req, res) {
+        console.log(req.body);
+        db.Comment.create(req.body)
+        .then(function(dbComment) {
+            console.log(dbComment)
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
+    })
 }

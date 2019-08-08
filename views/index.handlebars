@@ -2,9 +2,20 @@
     <h1>Hacker News Scraper</h1>
     <button id="scrapeButton">Scrape!</button>
 </div>
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-4">
+            <div class="container" id="commentBox" style="display:none">
+                <h5 id="commentHeader"></h5>
+                <form id="commentForm">
+                    <input name="commentTitle" placeholder="title">
+                    <input name="commentAuthor" placeholder="Your Name">
+                    <textarea name="commentBody" placeholder="Leave a comment..."></textarea>
+                    <button type="submit">Comment!</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-4">
             {{#each articles}}
             {{> articles/article-block}}
             {{/each}}
@@ -13,14 +24,6 @@
             {{#each comments}}
 
             {{/each}}
-            <div class="container" id="commentBox" style="display:none">
-                <form id="commentForm">
-                    <input name="commentTitle" placeholder="title">
-                    <input name="commentAuthor" placeholder="Your Name">
-                    <textarea name="commentBody" placeholder="Leave a comment..."></textarea>
-                    <button type="submit">Comment!</button>
-                </form>
-            </div>
         </div>
     </div>
 </div>
