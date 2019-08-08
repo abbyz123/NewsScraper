@@ -3,7 +3,7 @@ let logger = require("morgan");
 let mongoose = require("mongoose");
 let path = require("path");
 
-let PORT = 3000;
+var PORT = process.env.PORT || 8080;
 
 // Initialize Express
 let app = express();
