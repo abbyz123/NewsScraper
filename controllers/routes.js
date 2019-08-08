@@ -79,6 +79,8 @@ module.exports = function (app) {
         .then(function(dbComment) {
             console.log(dbComment)
 
+            comments = [];
+
             res.redirect("/");
         })
         .catch(function(err) {
