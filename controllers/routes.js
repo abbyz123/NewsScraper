@@ -78,6 +78,8 @@ module.exports = function (app) {
         db.Comment.create(req.body)
         .then(function(dbComment) {
             console.log(dbComment)
+
+            res.redirect("/");
         })
         .catch(function(err) {
             console.log(err);
